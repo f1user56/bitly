@@ -21,8 +21,12 @@ class MainController extends Controller
 
     public function redirect($short, BitLy $bitLy)
     {
+        if (!($originLink = $bitLy->getOriginalLink($short))) {
+            abort(404);
+        }
+
         return redirect(
-            $bitLy->getOriginalLink($short)
+            $originLink
         );
     }
 }

@@ -38,7 +38,7 @@ class BitLy
         return $shortLink;
     }
 
-    public function getOriginalLink(string $short): string
+    public function getOriginalLink(string $short): ?string
     {
         [$table, $shortLink] = ShortCreator::parseLink($short, self::TABLE_BITES_POLICY);
 
