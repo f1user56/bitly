@@ -27,7 +27,6 @@ class ShortLinkController extends Controller
 
     public function short(Request $request)
     {
-
         $validator = Validator::make(['url' => $request->input('url')], [
             "url" => "required|url"
         ]);
@@ -36,8 +35,21 @@ class ShortLinkController extends Controller
 
         $shortlink = $this->service->shortProcess($data['url']);
 
-        return redirect("/?link=" . $shortlink);
+        return response()->json(["short" => $shortlink]);
 
+    }
+
+    public function getOrigin(Request $request, BitLy $bitLy)
+    {
+        $short = $request->input('short');
+
+        $originalLink = $bitLy->getOriginalLink($short);
+
+       if (!is_null($originalLink)) {
+           return response()->json(["original" => $originalLink]);
+       }
+
+       throw new \Exception("shortlink $short not found");
     }
 }
 //. __DIR__ . "?link=" . $shortlink

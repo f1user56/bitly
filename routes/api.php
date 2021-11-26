@@ -7,5 +7,6 @@ $router->group([
     'namespace' => 'Api'
 ], function($router) {
     $router->post('/shortlink',['as' => 'ShortLinkController', 'uses' => 'ShortLinkController@short']);
+    $router->post('/getorigin',['as' => 'GetOriginLink', 'uses' => 'ShortLinkController@getOrigin']);
 });
 
