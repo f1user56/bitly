@@ -33,7 +33,7 @@ class ShortLinkController extends Controller
 
         $data = $validator->validated();
 
-        $shortlink = $this->service->shortProcess($data['url']);
+        $shortlink = env('APP_URL') . '/' . $this->service->shortProcess($data['url']);
 
         return response()->json(["short" => $shortlink]);
 
@@ -52,4 +52,3 @@ class ShortLinkController extends Controller
        throw new \Exception("shortlink $short not found");
     }
 }
-//. __DIR__ . "?link=" . $shortlink

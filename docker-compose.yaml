@@ -1,0 +1,14 @@
+version: "3"
+services:
+  app:
+    build: docker/php
+    volumes:
+    - .:/var/www/app
+  nginx:
+    image: nginx
+    ports:
+    - "80:80"
+    volumes:
+    - ./docker/nginx:/etc/nginx/conf.d
+  db:
+    image: redis

@@ -24,7 +24,6 @@ class BitLy
 
     public function shortProcess(string $originalLink): string
     {
-
         $short = $this->create();
 
         $table = $this->systemSettings->getTableName();
@@ -56,7 +55,7 @@ class BitLy
      */
     protected function createShortLink($short, $prefix): string
     {
-        return env('APP_URL') . '/' . $prefix . $short;
+        return $prefix . $short;
     }
 
     protected function insertShortIntoTable($table, $short, $originalLink)
@@ -69,7 +68,6 @@ class BitLy
             $this->systemSettings->changeCurrentTable();
             $this->insertShortIntoTable($table, $short, $originalLink);
         }
-
     }
 
     protected function create(): string

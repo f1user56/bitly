@@ -62,6 +62,14 @@ class SystemSettings
         }
     }
 
+    /**
+     * @return bool
+     */
+    public function isExists(): bool
+    {
+        return $this->client->exists(self::HASH_TABLE_NAME);
+    }
+
     public function changeCurrentTable()
     {
         $table = $this->client->hget(self::HASH_TABLE_NAME, self::CURRENT_TABLE);
