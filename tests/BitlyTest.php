@@ -43,5 +43,7 @@ class BitlyTest extends TestCase
 
         $this->assertEquals(self::$originlink, $originalLink);
 
+        \Illuminate\Support\Facades\Redis::connection()->client()->flushDB();
     }
+
 }
