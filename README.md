@@ -1,4 +1,4 @@
-##START
+## START
 
 This application using 
 PHP
@@ -11,7 +11,7 @@ Next, you need to run the console command:
 
 $php artisan set-setting
 
-##START WITH DOCKER
+## START WITH DOCKER
 
 For installing application you can use docker command
 docker-compose up -d
